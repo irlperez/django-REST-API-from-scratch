@@ -5,6 +5,10 @@ from rest_framework.decorators import api_view # decorator
 from rest_framework.response import Response # response object
 from rest_framework import status # status codes
 
+@api_view(['GET'])
+def homepage(request):
+    
+    return Response('homepage',status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST']) # using the decorator we can condition the request. Get data. POST (create)
 def drink_list(request, format=None):
@@ -18,7 +22,7 @@ def drink_list(request, format=None):
 
         # return JsonResponse
         # return JsonResponse({'drinks' : serializer.data}) # keeping the old version
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     if request.method == 'POST': # checks for the method to be POST
         serializer = DrinkSerializer(data=request.data) # take data from request
@@ -50,3 +54,4 @@ def drink_detail(request, id, format=None):
     elif request.method == 'DELETE':
         drink.delete() # delete the data
         return Response(status=status.HTTP_204_NO_CONTENT)
+    

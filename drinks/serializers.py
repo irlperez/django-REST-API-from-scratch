@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Drink
 
+
 class DrinkSerializer(serializers.ModelSerializer): # an class, that takes from the model.
     '''the goal is to use this serializer when returning the model through the api.'''
     class Meta: # metadata that describes the model
