@@ -54,7 +54,6 @@ notebook==6.5.2
 notebook_shim==0.2.2
 numpy==1.23.4
 packaging==21.3
-pandas==1.5.1
 pandocfilters==1.5.0
 parso==0.8.3
 pexpect==4.8.0
@@ -66,7 +65,6 @@ prompt-toolkit==3.0.33
 psutil==5.9.4
 ptyprocess==0.7.0
 pure-eval==0.2.2
-pyarrow==10.0.0
 pycparser==2.21
 Pygments==2.13.0
 PyMySQL==1.0.2
@@ -92,4 +90,3 @@ urllib3==1.26.12
 wcwidth==0.2.5
 webencodings==0.5.1
 websocket-client==1.4.2
-yfinance==0.1.87
