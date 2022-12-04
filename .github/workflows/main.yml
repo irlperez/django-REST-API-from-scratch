@@ -8,7 +8,7 @@ name: test_Django
 on: [push] # we could also include PR like so: on: [pull_request, push]
 jobs:
   test project:
-  run-on: ubuntu-latest # operating system our code will run on
+  runs-on: ubuntu-latest # operating system our code will run on
   steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
