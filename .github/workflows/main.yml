@@ -1,0 +1,17 @@
+# following this page -> https://www.honeybadger.io/blog/django-test-github-actions/
+
+# workflow    - a YAML file that contains a list of instructions for processes.
+# job         - step by step instructions for an action
+# step        - tasks that can run commands in a job
+
+name: test_Django
+on: [push] # we could also include PR like so: on: [pull_request, push]
+jobs:
+  test project:
+  run-on: ubuntu-latest # operating system our code will run on
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - run: pip install -r requirements.txt
+    - run: python manage.py test
+  
