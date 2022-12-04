@@ -7,7 +7,7 @@
 name: test_Django # name of the actual test, it can be anything
 on: [push] # we could also include PR like so: on: [pull_request, push]
 jobs:
-  test project:
+  test_project: # no spaces
     runs-on: ubuntu-latest # operating system our code will run on
     steps:
       - uses: actions/checkout@v2
