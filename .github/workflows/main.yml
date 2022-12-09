@@ -14,3 +14,9 @@ jobs:
       - uses: actions/setup-python@v2
       - run: pip install -r requirements.txt
       - run: python manage.py test
+  test_project2: # no spaces
+    runs-on: ubuntu-latest # operating system our code will run on
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: python manage.py test
