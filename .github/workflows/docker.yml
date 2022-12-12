@@ -16,6 +16,6 @@ jobs:
       - context: .
         outputs: type=oci,dest=/tmp/image.tar
       - uses: actions/upload-artifact@v2
-      - with:
-        - path: image.tar
+        with:
+          path: image.tar
           
