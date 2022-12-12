@@ -17,26 +17,23 @@ FROM python:3
 # enviorment variable that needs to be injected when we run python inside another process. this helps with seeing logs.
 ENV PYTHONUNBUFFERED 1
 
-# create working directory
-RUN mkdir /code
-
-# set the working directory
-WORKDIR /code 
+# set/create the working directory
+WORKDIR /app 
 
 # copy the requirements.txt to the working directory
-COPY requirements.txt /code/
+COPY requirements.txt /app/
 
 # install the depencies. --user installs the package in a home directory that will most likey not require previlages.
 RUN pip install --user -r requirements.txt
 
 # copy the entire project to the code directory.
-COPY . /code/
+COPY . .
 
 # this is the command we are telling Docker to run. It's technically considered JSON so we can't use single quotes.
 # CMD python manage.py runserver """ OLD VERSION """"
 
 # specify four 0s. this is for binding connections. when we don't know what ip address we want to run our server. along with port 8000.
-CMD python manage.py runserver 0.0.0.0:8000 
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
 ### commands not working ###
