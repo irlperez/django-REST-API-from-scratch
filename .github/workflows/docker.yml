@@ -5,24 +5,12 @@
 # step        - tasks that can run commands in a job
 
 name: test_docker # name of the actual test, it can be anything
+description: yaml file for docker
 on: [push] # we could also include PR like so: on: [pull_request, push]
 jobs:
   build_docker: # no spaces
     runs-on: ubuntu-latest # operating system our code will run on
     steps:
-      - 
-        name: checkout
-        uses: actions/checkout@v2
-      - 
-        name: build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          tags: myimage:latest
-          outputs: type=docker,dest=/tmp/myimage.tar
-      -
-        name: upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: myimage.tar
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: docker build . -t django-dev
