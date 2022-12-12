@@ -1,0 +1,2 @@
+# what files docker ignores when copying over files.
+*/venv
