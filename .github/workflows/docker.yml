@@ -4,8 +4,7 @@
 # job         - step by step instructions for an action
 # step        - tasks that can run commands in a job
 
-name: test_docker # name of the actual test, it can be anything
-description: yaml file for docker
+name: build_docker # name of the actual test, it can be anything
 on: [push] # we could also include PR like so: on: [pull_request, push]
 jobs:
   build_docker: # no spaces
