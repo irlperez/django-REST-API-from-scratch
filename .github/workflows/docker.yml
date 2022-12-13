@@ -18,12 +18,12 @@ jobs:
         name: set up docker buildx
         uses: docker/setup-buildx-action@v2
       -
-        name: build
+        name: build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
-          push: false
+          tags: image:latest
           outputs: type=docker,dest=/tmp/image.tar
       -
         name: upload artifact
