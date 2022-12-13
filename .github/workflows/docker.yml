@@ -54,6 +54,8 @@ jobs:
         name: run docker
         run: docker run -p 8001:8000 image
         # had to remove the t from -it -> https://stackoverflow.com/questions/43099116/error-the-input-device-is-not-a-tty
+      -
+        name: stop docker
         run: docker stop image
 
 
