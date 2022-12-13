@@ -10,6 +10,16 @@ jobs:
   build_docker: # no spaces
     runs-on: ubuntu-latest # operating system our code will run on
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - run: docker build . -t django-dev
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: set up docker buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          

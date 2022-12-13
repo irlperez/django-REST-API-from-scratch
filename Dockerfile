@@ -15,19 +15,19 @@
 FROM python:3
 
 # enviorment variable that needs to be injected when we run python inside another process. this helps with seeing logs.
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # set/create the working directory
-WORKDIR /app 
+WORKDIR /code 
 
 # copy the requirements.txt to the working directory
-COPY requirements.txt /app/
+COPY requirements.txt /code/
 
-# install the depencies. --user installs the package in a home directory that will most likey not require previlages.
-RUN pip install --user -r requirements.txt
+# install the depencies.
+RUN pip install -r requirements.txt
 
 # copy the entire project to the code directory.
-COPY . .
+COPY . /code/
 
 # this is the command we are telling Docker to run. It's technically considered JSON so we can't use single quotes.
 # CMD python manage.py runserver """ OLD VERSION """"
