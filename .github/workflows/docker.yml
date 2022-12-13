@@ -4,6 +4,7 @@
 # job         - step by step instructions for an action
 # step        - tasks that can run commands in a job
 
+
 name: test_docker # name of the actual test, it can be anything
 on: [push] # we could also include PR like so: on: [pull_request, push]
 jobs:
@@ -17,9 +18,19 @@ jobs:
         name: set up docker buildx
         uses: docker/setup-buildx-action@v2
       -
-        name: build and push
+        name: build
         uses: docker/build-push-action@v3
         with:
           context: .
           file: ./Dockerfile
-          
+          push: false
+          outputs: type=oci,dest=/tmp/image.tar
+      -
+        name: upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: /tmp/image.tar
+
+
+# resources
+# https://docs.docker.com/build/ci/github-actions/
