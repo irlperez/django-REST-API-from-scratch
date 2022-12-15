@@ -52,11 +52,17 @@ jobs:
         run: docker image ls -a
       -
         name: run docker
-        run: |
-          docker run -p 8001:8000 image
-          docker stop image
+        run: docker compose up -d
+      - 
+        name: stop docker
+        run: docker compose down -t 6
+
+# thank you Dan. By creating a docker-compose.yml we're able to start an image in the background without it taking over our CLI. Then run a second command to shut it down.  
+
 # had to remove the t from -it -> https://stackoverflow.com/questions/43099116/error-the-input-device-is-not-a-tty
 
 
 # resources
+# https://docs.docker.com/samples/django/
 # https://docs.docker.com/build/ci/github-actions/
+# 
