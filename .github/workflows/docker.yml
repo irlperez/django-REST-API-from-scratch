@@ -49,9 +49,7 @@ jobs:
         run: docker load --input /tmp/image.tar
       -
         name: list files/images
-        run: |
-          ls
-          docker image ls -a
+        run: ls
       -
         name: run docker
         run: docker compose up -d
