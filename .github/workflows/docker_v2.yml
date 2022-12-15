@@ -1,0 +1,54 @@
+# following this page -> https://www.honeybadger.io/blog/django-test-github-actions/
+
+# workflow    - a YAML file that contains a list of instructions for processes.
+# job         - step by step instructions for an action
+# step        - tasks that can run commands in a job
+
+
+name: test_docker_v2 # name of the actual test, it can be anything
+on: [push] # we could also include PR like so: on: [pull_request, push]
+jobs:
+  build_docker: # no spaces
+    runs-on: docker:dind # operating system our code will run on
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: build and push
+        run: docker build
+  run_docker:
+    runs-on: ubuntu-latest
+    needs: build_docker
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      # -
+      #   name: set up docker buildx
+      #   uses: docker/setup-buildx-action@v1
+      -
+        name: download artifacts (docker image) from previous work flow
+        uses: actions/download-artifact@v2
+        with:
+          name: image
+          path: /tmp
+      -
+        name: load docker images
+        run: docker load --input /tmp/image.tar
+      -
+        name: run docker
+        run: docker compose up -d
+      - 
+        name: stop docker
+        run: docker compose down -t 10
+
+# thank you Dan. By creating a docker-compose.yml we're able to start an image in the background without it taking over our CLI. Then run a second command to shut it down.  
+
+# had to remove the t from -it -> https://stackoverflow.com/questions/43099116/error-the-input-device-is-not-a-tty
+
+
+# resources
+# https://docs.docker.com/samples/django/
+# https://docs.docker.com/build/ci/github-actions/
+# 
