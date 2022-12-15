@@ -31,8 +31,8 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            ghcr.io/user/app:latest
-            ghcr.io/user/app:1.0.0
+            ghcr.io/irlperez/app:latest
+            ghcr.io/irlperez/app:1.0.0
   run_docker:
     runs-on: ubuntu-latest
     needs: build_docker
