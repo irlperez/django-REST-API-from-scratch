@@ -1,10 +1,8 @@
 version: '3.9'
 services:
   web:
-    build: .
+    image: ghcr.io/irlperez/app:latest
     ports:
       - "8001:8000"
-    volumes:
-      - .:/code
 # spent a long time trying to run the command "docker run..." like in this guide -> https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/django/
 # removing that command it seems like docker knows what to do from my Dockerfile
