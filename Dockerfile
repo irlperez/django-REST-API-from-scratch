@@ -29,6 +29,8 @@ RUN pip install -r requirements.txt
 # copy the entire project to the code directory.
 COPY . /code/
 
+RUN ls
+
 # this is the command we are telling Docker to run. It's technically considered JSON so we can't use single quotes.
 # CMD python manage.py runserver """ OLD VERSION """"
 

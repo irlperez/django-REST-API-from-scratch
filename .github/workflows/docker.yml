@@ -48,14 +48,11 @@ jobs:
         name: load docker images
         run: docker load --input /tmp/image.tar
       -
-        name: list files/images
-        run: ls
-      -
         name: run docker
         run: docker compose up -d
       - 
         name: stop docker
-        run: docker compose down -t 6
+        run: docker compose down -t 10
 
 # thank you Dan. By creating a docker-compose.yml we're able to start an image in the background without it taking over our CLI. Then run a second command to shut it down.  
 
